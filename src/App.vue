@@ -1,85 +1,104 @@
 <template>
-  <div id="app">
-    <TodoList></TodoList>
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <div v-if="ok" >{{ msg }}</div>
-    <div v-else>v-else</div>
-    <h2>Essential Links</h2>
-    <a :href="url" >vue link</a>
-    <form type='submit' @submit.prevent="submit" >
-      <p>{{ msg }}</p>
-      <input :value="msg" />
-    </form>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-  </div>
+    <div class="a-c" id="app">
+        <div @click="del" v-html="c"></div>
+        <button @click="loginOn" :class='{col: "isAdd"}'>登录</button>
+    </div>
 </template>
 
 <script type="es6">
-//import Hello from './components/hello.vue'
-import TodoList from './components/todo-list.vue'
-//module.export={}
-export default {
-  name: 'app',
-  data () {
-    return {
-      aaa: '<p>haha</p>',
-      msg: 'Welcome to Your Vue.js App',
-      ok: false,
-      url: 'http://www.baidu.com/query=vue'
+    //import Hello from './components/hello.vue'
+    import TodoList from './components/todo-list.vue'
+    //module.export={}
+    export default {
+        name: 'app',
+
+        data () {
+            return {
+                msg: 'Welcome to Your Vue.js App1234',
+                a: {
+                    b: 1
+                },
+                c: '<p>sdfsg</p>',
+                isAdd: true
+            }
+        },
+
+        methods: {
+            loginOn () {
+                window.location.href = '/about';
+            },
+            del () {
+                this.$destroy();
+            }
+        },
+
+        beforeCreate () {
+            console.log('beforeCreate');
+        },
+
+        created () {
+            console.log('created');
+        },
+
+        beforeMount () {
+            console.log('beforeMount');
+        },
+
+        mounted () {
+            console.log('mounted');
+        },
+
+        beforeUpdate () {
+            console.log('beforeUpdate list.count');
+        },
+
+        updated () {
+            console.log('updated list.count');
+        },
+
+        beforeDestroy () {
+            console.log('beforeDestroyed');
+        },
+
+        destroyed () {
+            console.log('destroyed');
+        }
     }
-  },
-  methods: {
-    test() {
-      this.msg = this.msg + '1';
-    },
-    submit(e) {
-      console.log(e);
-    }
-  },
-  components: {
-  TodoList
-  }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    #app {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+    }
 
-h1, h2 {
-  font-weight: normal;
-}
+    h1, h2 {
+        font-weight: normal;
+    }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+    .col {
+        color: red;
+    }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
 
-a {
-  color: #42b983;
-}
+    li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    a {
+        color: #42b983;
+    }
+
+    .a-c {
+        text-align: center;
+    }
 </style>

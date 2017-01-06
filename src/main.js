@@ -1,53 +1,57 @@
 import Vue from 'vue'
-//import App from './App.vue'
+import App from './App.vue'
 import Index from './index.vue'
+//import common from './css/common.css'
 
 /*Vue.component('my-component', {
-  template: '<div>A custom component! outer</div>'
+ template: '<div>A custom component! outer</div>'
+ });
+
+ Vue.component('component2', {
+ template: '<div>abnormal</div>'
+ });*/
+
+Vue.component('todo-item', {
+    template: '\
+    <li>\
+      {{ title }}\
+      <button v-on:click="$emit(\'remove\')">X</button>\
+    </li>\
+  ',
+    props: ['title']
 });
 
-Vue.component('component2', {
-  template: '<div>abnormal</div>'
-});*/
-
-const NotFound = { template: '<p>Page not found</p>' }
-const Home = { template: '<p>home page</p>' }
-const About = { template: '<p>about page</p>' }
+const NotFound = {template: '<p>Page not found</p>'};
+const Home = App;
+const About = Index ;
 const routes = {
-  '/': Home,
-  '/about': About
+    '/': Home,
+    '/about': About
 };
 
 new Vue({
-  el: '#app',
-  data: {
-    currentRoute: window.location.pathname
-  },
-  computed: {
-    ViewComponent () {
-      return routes[this.currentRoute] || NotFound
+    el: '#app',
+    data: {
+        currentRoute: window.location.pathname
+    },
+    computed: {
+        ViewComponent () {
+            return routes[this.currentRoute] || NotFound
+        }
+    },
+    render (h) {
+        return h(this.ViewComponent)
     }
-  },
-  render (h) { return h(this.ViewComponent) }
 });
 
-/*new Vue({
-  el: '#app',
-  render: h => h(Index),
-  //created: function () {alert('实例创建完成');},
-  //beforeCreate: function () {alert('开始编译前')},
-  compiled: function() {
-    alert('编译完成')
-  },
-  ready: function() {
-    alert('准备好了')
-  },
-  beforeDestroy: function() {
-    alert('准备销毁')
-  },
-  destroyed: function() {
-    alert("销毁")
-  }
-});*/
+
+/*
+ window.vm = new Vue({
+ el: '#app',
+ render: h => h(Index)
+ });
+ console.log(vm.$data);
+ //console.log(vm.$data.msg == vm.msg);
+ console.log(vm);*/
 
 

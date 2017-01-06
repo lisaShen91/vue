@@ -80,7 +80,6 @@ export default {
     methods: {
         add() {
             this.books.push(this.list);
-            this.$destroy();
             this.list = {
                 name: '',
                 price: '',
@@ -90,28 +89,6 @@ export default {
         remove(book, index) {
             this.books.splice(index, 1);
         }
-    },
-
-    created () {
-        var aa = document.getElementsByClassName('header');
-
-        console.log('created', aa);
-    },
-
-    beforeMount () {
-        console.log('beforeMount');
-    },
-
-    mounted () {
-        console.log('mounted list.count', this.list.count);
-    },
-
-    beforeUpdate () {
-        console.log('beforeUpdate list.count', this.list.count);
-    },
-
-    updated () {
-        console.log('updated list.count', this.list.count);
     },
 
     computed: {
@@ -128,12 +105,6 @@ export default {
         'my-component':  {
             template: '<div>A custom component! inner</div>'
         }
-    },
-    beforeDestroyed () {
-        console.log('beforeDestroyed');
-    },
-
-    destroyed () {
     }
 }
 </script>
