@@ -10,9 +10,28 @@ Vue.component('component2', {
   template: '<div>abnormal</div>'
 });*/
 
-
+const NotFound = { template: '<p>Page not found</p>' }
+const Home = { template: '<p>home page</p>' }
+const About = { template: '<p>about page</p>' }
+const routes = {
+  '/': Home,
+  '/about': About
+};
 
 new Vue({
+  el: '#app',
+  data: {
+    currentRoute: window.location.pathname
+  },
+  computed: {
+    ViewComponent () {
+      return routes[this.currentRoute] || NotFound
+    }
+  },
+  render (h) { return h(this.ViewComponent) }
+});
+
+/*new Vue({
   el: '#app',
   render: h => h(Index),
   //created: function () {alert('实例创建完成');},
@@ -29,6 +48,6 @@ new Vue({
   destroyed: function() {
     alert("销毁")
   }
-});
+});*/
 
 
