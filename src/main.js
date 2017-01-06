@@ -1,13 +1,34 @@
 import Vue from 'vue'
-import App from './App.vue'
-import MyApp from './components/library.vue'
-//var App = require('./App.vue');
+//import App from './App.vue'
+import Index from './index.vue'
 
-//new Vue({
-//  el: '#app',
-//  render: h => h(App)   //×é¼şĞè×¢²á ²Å¿ÉÒÔÔÚhtmlÖĞÊ¹ÓÃ
-//});
+/*Vue.component('my-component', {
+  template: '<div>A custom component! outer</div>'
+});
+
+Vue.component('component2', {
+  template: '<div>abnormal</div>'
+});*/
+
+
+
 new Vue({
   el: '#app',
-  render: h => h(MyApp)
+  render: h => h(Index),
+  //created: function () {alert('å®ä¾‹åˆ›å»ºå®Œæˆ');},
+  //beforeCreate: function () {alert('å¼€å§‹ç¼–è¯‘å‰')},
+  compiled: function() {
+    alert('ç¼–è¯‘å®Œæˆ')
+  },
+  ready: function() {
+    alert('å‡†å¤‡å¥½äº†')
+  },
+  beforeDestroy: function() {
+    alert('å‡†å¤‡é”€æ¯')
+  },
+  destroyed: function() {
+    alert("é”€æ¯")
+  }
 });
+
+

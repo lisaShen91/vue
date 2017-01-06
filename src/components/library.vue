@@ -1,7 +1,8 @@
 <template>
     <div id="app">
         <div class="container">
-            <a href="http://www.baidu.com" @click.prevent>goBD</a>
+            <!--<my-component></my-component>-->
+            <!--<a href="http://www.baidu.com" @click.prevent>goBD</a>-->
             <h1 class="header" v-if="showTitle">书籍管理 出现了</h1>
             <h1 class="header" v-if="!showTitle">隐藏了</h1>
             <table class="table table-bordered">
@@ -12,6 +13,8 @@
                     <td>小计</td>
                     <td>操作</td>
                 </tr>
+                <!--<tr is="component2"></tr>-->
+                <component2></component2>
                 <tr v-for="(book, index) in books">
                     <td>{{ book.name }}</td>
                     <td>{{ book.price }}</td>
@@ -39,7 +42,7 @@
             </div>
             <button class="btn btn-primary" @click="add">添加</button>
         </div>
-        <ToDo></ToDo>
+        <!--<ToDo></ToDo>-->
     </div>
 </template>
 
@@ -47,6 +50,8 @@
     import ToDo from './todo-list.vue'
     import $ from 'jquery'
 //var Vue = require('vue');
+
+
 var books = [
     {name: 'nodeJs',price: 30, count: 1},
     {name: 'angularJs', price: 20, count: 2},
@@ -54,10 +59,10 @@ var books = [
 ];
 
 export default {
-    beforeCreate () {
+   /* beforeCreate () {
         var aa = document.getElementsByClassName('header');
         console.log('beforeCreate', aa, $);
-    },
+    },*/
 
     data () {
         return {
@@ -75,7 +80,7 @@ export default {
     methods: {
         add() {
             this.books.push(this.list);
-            console.log(this.list);
+            this.$destroy();
             this.list = {
                 name: '',
                 price: '',
@@ -89,6 +94,7 @@ export default {
 
     created () {
         var aa = document.getElementsByClassName('header');
+
         console.log('created', aa);
     },
 
@@ -118,7 +124,16 @@ export default {
         }
     },
     components: {
-        ToDo
+        ToDo: ToDo,
+        'my-component':  {
+            template: '<div>A custom component! inner</div>'
+        }
+    },
+    beforeDestroyed () {
+        console.log('beforeDestroyed');
+    },
+
+    destroyed () {
     }
 }
 </script>

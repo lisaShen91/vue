@@ -4,7 +4,10 @@
             <li v-for="(todo, index) in todos">
                 <h1 v-bind:title="todo.text" @click="timeToDo(todo.text)">{{ index }} - {{ todo.value }} - {{ todo.text }}</h1>
             </li>
+            <li is="component2"></li>
+            <!--<component2></component2>-->
         </ul>
+        <my-component></my-component>
     </div>
 </template>
 

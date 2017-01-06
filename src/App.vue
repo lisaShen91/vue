@@ -6,10 +6,10 @@
     <div v-if="ok" >{{ msg }}</div>
     <div v-else>v-else</div>
     <h2>Essential Links</h2>
-    <a v-bind:href="url" >vue link</a>
-    <form type='submit' v-on:submit.prevent="submit" >
+    <a :href="url" >vue link</a>
+    <form type='submit' @submit.prevent="submit" >
       <p>{{ msg }}</p>
-      <input v-bind:value="msg" />
+      <input :value="msg" />
     </form>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
@@ -27,7 +27,7 @@
   </div>
 </template>
 
-<script>
+<script type="es6">
 //import Hello from './components/hello.vue'
 import TodoList from './components/todo-list.vue'
 //module.export={}
