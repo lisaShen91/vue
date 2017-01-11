@@ -1,7 +1,7 @@
 <template>
     <div class="a-c" id="app">
         <div @click="del" v-html="c"></div>
-        <button @click="loginOn" :class='{col: "isAdd"}'>登录</button>
+        <button @click="loginOn" :class='{col: "isAdd"}'>登录</button>                                                                                                                                
     </div>
 </template>
 

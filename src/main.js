@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import ElementUI from 'element-ui'
 import Index from './index.vue'
 //import common from './css/common.css'
 
@@ -10,7 +11,6 @@ import Index from './index.vue'
  Vue.component('component2', {
  template: '<div>abnormal</div>'
  });*/
-
 Vue.component('todo-item', {
     template: '\
     <li>\
@@ -34,6 +34,7 @@ new Vue({
     data: {
         currentRoute: window.location.pathname
     },
+    // routes: routes
     computed: {
         ViewComponent () {
             return routes[this.currentRoute] || NotFound

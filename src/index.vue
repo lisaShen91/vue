@@ -1,15 +1,15 @@
 <template>
     <div id="app">
-        <h1 class="color-red" v-bind:class="{'alignc': classA}">
+        <h1 class="color-red" v-bind:class="{'alignc': classA}">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
             {{ message }}
         </h1>
         <!--<LoginModule></LoginModule>-->
-        <Com></Com>
+        <Com></com>
     </div>
 </template>
 
 <script type="es6">
-    import LoginModule from "./components/login.vue"
+    import LoginModule from "./components/login.vue"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
     import Com from "./components/childComponent.vue"
 
     export default {
@@ -20,8 +20,8 @@
             }
         },
         components: {
-            LoginModule: LoginModule,
-            Com: Com
+            // LoginModule: LoginModule,
+            Com
         }
     }
 
